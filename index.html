@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ZAC Auto-école Le Thillay · Permis manuel et automatique</title>
+<meta name="description" content="Auto-école au 64 rue de Paris, Le Thillay : permis B manuel ou auto, conduite accompagnée, code, scooter. Inscription en ligne, rien à payer.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="icon" href="assets/logo-zac.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@500&family=Instrument+Sans:wght@400;600&display=swap">
+<link rel="preload" as="image" href="assets/film/K0.jpg">
+<link rel="stylesheet" href="assets/v3.css">
+<script>
+/* Accueil fixe décidé avant le premier affichage (mouvement réduit, bouton « Couper les animations », paysage de téléphone) */
+history.scrollRestoration='manual';(function(){var c=false;try{c=localStorage.getItem('zac-calme')==='1'}catch(e){}
+if(c||matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(orientation: landscape) and (pointer: coarse) and (max-height: 560px)').matches)document.documentElement.classList.add('static')})();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":["DrivingSchool","LocalBusiness"],"name":"ZAC Auto-école","slogan":"Formateur de pilotes","telephone":"+33767561121","email":"zacautoecole@gmail.com",
+"address":{"@type":"PostalAddress","streetAddress":"64 rue de Paris","postalCode":"95500","addressLocality":"Le Thillay","addressCountry":"FR"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"18:00"}],
+"areaServed":["Le Thillay","Villiers-le-Bel","Gonesse","Goussainville","Garges-lès-Gonesse","Sarcelles","Fosses","Louvres","Arnouville","Roissy-en-France"],
+"knowsLanguage":["fr","ar","en","tr"],"paymentAccepted":"Espèces, virement, chèque"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="demo" role="note"><i aria-hidden="true"></i>Site de démonstration · images générées par IA</div>
+
+<header class="top">
+  <a class="marque" href="#main" aria-label="ZAC Auto-école, accueil"><img src="assets/logo-zac.webp" alt="" width="600" height="487"><span><b>ZAC</b><small>Formateur de pilotes</small></span></a>
+  <nav class="liens" aria-label="Sections">
+    <a href="#paddock">Formations</a><a href="#etapes">Étapes</a><a href="#dossier">Dossier</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="tel-top" href="tel:+33767561121">07 67 56 11 21</a>
+  <a class="btn go petit" href="#inscription">M'inscrire</a>
+</header>
+
+<!-- Tableau de bord : compteur, secteurs, mini-carte (D55) -->
+<aside class="dash" id="dash" aria-hidden="true">
+  <div class="compteur">
+    <div class="regime" id="regime"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="vit"><b id="kmh">0</b><small>km/h</small></div>
+    <div class="rap"><small>rapport</small><b id="rapport">N</b></div>
+    <div class="limite" id="limite"><span>80</span></div>
+  </div>
+  <p class="leve" id="leve">Lève le pied</p>
+  <div class="secteurs"><span id="s1">S1</span><span id="s2">S2</span><span id="s3">S3</span><b id="chrono">0:00.0</b></div>
+</aside>
+<aside class="carte" id="carte" aria-hidden="true">
+  <svg viewBox="0 0 200 130">
+    <path id="trace" class="trace" d="M38 30C26 22 14 30 22 40L62 70C70 76 78 70 82 62L148 22C160 14 176 20 170 32C166 40 168 48 178 56C190 66 184 84 168 84L130 92C112 96 110 112 94 114L56 102C44 98 48 88 40 84L30 74C22 66 26 56 32 50C38 44 46 36 38 30Z"/>
+    <path class="trace vive" id="vive" d="M38 30C26 22 14 30 22 40L62 70C70 76 78 70 82 62L148 22C160 14 176 20 170 32C166 40 168 48 178 56C190 66 184 84 168 84L130 92C112 96 110 112 94 114L56 102C44 98 48 88 40 84L30 74C22 66 26 56 32 50C38 44 46 36 38 30Z"/>
+    <g id="reperes"></g>
+    <circle id="point" r="5.5" cx="0" cy="0"/>
+  </svg>
+  <p class="lbl" id="virage">Grille de départ</p>
+</aside>
+
+<main id="main" tabindex="-1">
+
+<!-- FILM 1 : page blanche, la monoplace entre (3D), on plonge dans la piste, puis le stand -->
+<section class="film" id="film1" data-h="360,420" aria-label="L'ouverture">
+  <i class="repere" data-virage="L'arrivée" style="top:0"></i>
+  <i class="repere" data-virage="En piste" style="top:11%"></i>
+  <i class="repere" data-virage="La ligne droite" style="top:30%"></i>
+  <div class="stage">
+    <div class="blanc" aria-hidden="true"></div>
+    <div class="acteA" id="acteA">
+      <div class="geant" aria-hidden="true">95</div>
+      <div class="vitesse" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="piste" aria-hidden="true"><i class="vibreur"></i></div>
+      <div class="voiture" id="voiture" aria-hidden="true">
+        <i class="ombre"></i>
+        <img class="nette" src="assets/monoplace.webp" alt="" width="964" height="252">
+        <img class="file" src="assets/monoplace.webp" alt="" width="964" height="252">
+      </div>
+      <div class="intro" id="intro">
+        <p class="puce lbl">Grille P1 · N°95</p>
+        <h1 class="split charge">Ici, on forme des pilotes de <em>la route.</em></h1>
+        <div class="intro-cote">
+          <p>Permis manuel ou automatique, conduite accompagnée, code, scooter. Au 64 rue de Paris, au Thillay.</p>
+          <div class="ctas"><a class="btn go" href="#inscription">M'inscrire</a><a class="btn ligne" href="#paddock">Voir les formations</a></div>
+          <p class="lbl tel">Rien à payer en ligne · <a href="tel:+33767561121">07 67 56 11 21</a>, aussi sur WhatsApp</p>
+        </div>
+      </div>
+      <div class="indice lbl" aria-hidden="true"><span>Fais défiler</span><i></i></div>
+    </div>
+    <div class="plan decor" data-plan="S" data-fixe="assets/film/K5.jpg" data-a=".15" data-b=".46"></div>
+    <div class="plan" data-plan="R" data-seq="P5" data-poster="assets/film/K5.jpg" data-a=".4" data-b="1.01"></div>
+    <div class="voile"></div>
+
+    <div class="band b-g" data-a=".44" data-b=".68">
+      <p class="puce lbl">Sur la piste · N°95</p>
+      <h2 class="split">Ta place est <em>libre.</em></h2>
+      <p class="sous">On t'emmène du premier volant jusqu'au permis, en sécurité et sans brûler les étapes.</p>
+    </div>
+    <div class="band b-g" data-a=".72" data-b="1.2">
+      <p class="puce lbl">En piste · Écurie ZAC</p>
+      <h2 class="split">La monoplace te fait <em>rêver.</em></h2>
+      <p class="sous">Ton box t'attend juste en dessous : choisis ta formation.</p>
+    </div>
+    <p class="ia lbl">Images générées par IA</p>
+  </div>
+</section>
+
+<!-- PADDOCK : le défilement fait glisser les box (D45, D46) -->
+<section class="paddock" id="paddock" data-h="600,420" aria-label="Les formations" data-virage="Le paddock" data-s="2">
+  <div class="stage">
+    <header class="pad-tete">
+      <p class="lbl">Le paddock · 12 formations, 7 écuries</p>
+      <h2>Choisis ton écurie.</h2>
+      <p class="pad-aide">Touche un box pour entrer dans le bureau des ingénieurs.</p>
+    </header>
+    <div class="rail"><div class="track" id="track"></div></div>
+    <nav class="pills" id="pills" aria-label="Les écuries"></nav>
+  </div>
+</section>
+<div class="vibreurs" aria-hidden="true"><i></i></div>
+
+<!-- FILM 2 : les feux, la montée, regarder loin, la maîtrise, l'arrivée -->
+<section class="film" id="film2" data-h="650,800" aria-label="Le parcours" data-s="3">
+  <i class="repere" data-virage="Feux de départ" style="top:0"></i>
+  <i class="repere" data-virage="Le départ" style="top:23%"></i>
+  <i class="repere" data-virage="La ligne droite" style="top:40%"></i>
+  <i class="repere" data-virage="Panneau ambre" style="top:53%"></i>
+  <i class="repere" data-virage="Retour au stand" style="top:67%"></i>
+  <div class="stage">
+    <div class="plan" data-plan="P3" data-seq="P3" data-poster="assets/film/K2b.jpg" data-a="0" data-b=".27"></div>
+    <div class="plan" data-plan="L1" data-seq="L1" data-poster="assets/film/L1.jpg" data-a=".26" data-b=".5"></div>
+    <div class="plan" data-plan="P5" data-seq="P5" data-poster="assets/film/K5.jpg" data-a=".49" data-b=".7"></div>
+    <div class="plan" data-plan="L2" data-seq="L2" data-poster="assets/film/L2.jpg" data-a=".69" data-b=".85"></div>
+    <div class="plan" data-plan="T" data-seq="T" data-poster="assets/film/K2.jpg" data-a=".84" data-b="1.01"></div>
+    <div class="voile"></div>
+
+    <div class="band b-g" data-a=".02" data-b=".22">
+      <p class="puce lbl">Feux de départ</p>
+      <h2 class="split">Cinq feux. Cinq étapes.</h2>
+      <ol class="etapes-film" id="etapesFilm"><li><b>01</b>Évaluation</li><li><b>02</b>Code</li><li><b>03</b>Conduite</li><li><b>04</b>Examen</li><li><b>05</b>Permis</li></ol>
+      <div class="feux-film" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="band b-g" data-a=".28" data-b=".46">
+      <p class="puce lbl">Le départ · feux éteints</p>
+      <h2 class="split">Une étape à la fois.</h2>
+      <p class="sous">Chaque étape a un début, une fin, et un moniteur qui te dit où tu en es.</p>
+    </div>
+    <div class="band b-g" data-a=".48" data-b=".62">
+      <h2 class="split">Un bon pilote <em>regarde loin.</em></h2>
+      <p class="sous">Anticiper, c'est voir le danger avant qu'il arrive.</p>
+    </div>
+    <div class="band b-g" data-a=".63" data-b=".76">
+      <p class="puce lbl ambre">Panneau ambre</p>
+      <h2 class="split">On lève <em>le pied.</em></h2>
+      <p class="sous">Distances, angles morts, priorités : les bons réflexes à chaque leçon.</p>
+    </div>
+    <div class="band b-g" data-a=".79" data-b=".88">
+      <p class="puce lbl">Retour au stand</p>
+      <h2 class="split">La voiture-école t'emmène <em>jusqu'à l'examen.</em></h2>
+    </div>
+    <div class="band b-g fin" data-a=".88" data-b="1.2">
+      <h2 class="split">Ta voiture-école <em>t'attend.</em></h2>
+      <p class="sous">Double commande, boîte manuelle ou automatique.</p>
+      <div class="ctas"><a class="btn go" href="#inscription">M'inscrire</a><a class="btn ligne clair" href="tel:+33767561121">Appeler</a></div>
+    </div>
+    <p class="ia lbl">Images générées par IA</p>
+  </div>
+</section>
+<div class="vibreurs" aria-hidden="true"><i></i></div>
+
+<!-- INSCRIPTION : la case de grille -->
+<section class="papier inscription" id="inscription" data-in data-virage="Ta case de grille">
+  <div class="enveloppe deux">
+    <header class="tete">
+      <p class="lbl">Ta case de grille</p>
+      <h2>Demande ton rappel.</h2>
+      <p class="chapo">Tu laisses ton prénom et ton numéro. On te rappelle pour fixer ton évaluation de départ, environ 1 heure au volant. Rien à payer en ligne.</p>
+      <p class="appel">Plus rapide : <a href="tel:+33767561121">07 67 56 11 21</a></p>
+    </header>
+    <div class="case" data-i="0">
+      <div class="case-haut"><span class="lbl">P1 · N°95</span><span class="mini-feux" id="miniFeux"><i class="on"></i><i></i><i></i></span></div>
+      <form name="inscription" method="POST" data-netlify="true" netlify-honeypot="adresse-web" id="f1">
+        <input type="hidden" name="form-name" value="inscription">
+        <p hidden><label>Ne pas remplir <input name="adresse-web"></label></p>
+        <input type="hidden" name="formation" id="f1-formation">
+        <label>Ton prénom<input name="prenom" autocomplete="given-name" required></label>
+        <label>Ton téléphone<input name="telephone" type="tel" inputmode="tel" autocomplete="tel" required pattern="[0-9 +.\-]{10,20}" title="Ton numéro, par exemple 06 12 34 56 78"></label>
+        <fieldset class="moments"><legend>Quand te rappeler ?</legend>
+          <label><input type="radio" name="moment" value="Dès que possible" checked><span>Au plus tôt</span></label>
+          <label><input type="radio" name="moment" value="Ce soir"><span>Ce soir</span></label>
+          <label><input type="radio" name="moment" value="Samedi"><span>Samedi</span></label>
+        </fieldset>
+        <label class="mineur"><input type="checkbox" id="mineur" name="mineur" value="oui"> J'ai moins de 18 ans</label>
+        <div class="parent" id="parent" hidden>
+          <label>Prénom d'un parent<input name="parent-prenom" autocomplete="off"></label>
+          <label>Téléphone du parent<input name="parent-telephone" type="tel" inputmode="tel" autocomplete="off"></label>
+        </div>
+        <p class="chosen" id="f1-chosen" hidden></p>
+        <button class="btn go large" type="submit">Être rappelé</button>
+        <p class="rgpd">On te rappelle dans l'heure aux horaires du bureau, sinon dès la réouverture. Tes informations servent uniquement à traiter ta demande (<a href="confidentialite.html">confidentialité</a>).</p>
+      </form>
+      <div id="merci" hidden>
+        <h3>C'est noté, <span id="merci-prenom"></span>.</h3>
+        <p>Prochaine étape : ton évaluation de départ, environ 1 heure au volant. On t'appelle pour fixer la date.</p>
+        <p class="rgpd">Tu veux gagner du temps ? Complète ton dossier (facultatif) :</p>
+        <form name="inscription-details" method="POST" data-netlify="true" id="f2">
+          <input type="hidden" name="form-name" value="inscription-details">
+          <input type="hidden" name="telephone" id="f2-tel">
+          <label>Ta formation
+            <select name="formation" id="f2-formation">
+              <option>Je ne sais pas encore</option>
+              <option>Boîte manuelle</option><option>Boîte automatique</option><option>Passerelle automatique vers manuelle</option>
+              <option>Conduite accompagnée (AAC)</option><option>Conduite supervisée</option><option>Permis accéléré</option>
+              <option>Stage de code accéléré</option><option>Code seul</option><option>Permis AM (scooter)</option>
+              <option>Remise à niveau et perfectionnement</option><option>Conduite pour seniors</option><option>Formation post-permis</option>
+            </select></label>
+          <fieldset><legend>Le paiement</legend>
+            <label class="opt"><input type="radio" name="paiement" value="En une fois"> En une fois</label>
+            <label class="opt"><input type="radio" name="paiement" value="En plusieurs fois"> En plusieurs fois, on en parle ensemble</label>
+            <label class="opt"><input type="radio" name="paiement" value="Avec une aide"> Avec une aide (France Travail, Région, apprentis, mairie)</label>
+            <label class="opt"><input type="radio" name="paiement" value="Je ne sais pas"> Je ne sais pas encore</label>
+          </fieldset>
+          <fieldset><legend>Tes leçons</legend>
+            <label class="opt"><input type="radio" name="depart" value="Auto-école"> Départ de l'auto-école</label>
+            <label class="opt"><input type="radio" name="depart" value="Prise en charge"> Je voudrais être pris(e) chez moi, au lycée, au travail ou à la gare</label>
+          </fieldset>
+          <label>Ton code e-photo (si tu l'as)<input name="ephoto" autocomplete="off"><small>Le code inscrit sur ta planche photo.</small></label>
+          <button class="btn ligne large" type="submit">Envoyer mon dossier</button>
+        </form>
+        <p class="rgpd" id="f2-ok" hidden>Merci, c'est noté. Voici la liste des papiers à apporter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LES 5 ÉTAPES : tour de chronométrage -->
+<section class="papier etapes" id="etapes" data-in data-virage="Le tour de chrono">
+  <div class="enveloppe">
+    <header class="tete">
+      <p class="lbl">Le tour de chrono · de l'inscription au permis</p>
+      <h2>On t'accompagne jusqu'au bout.</h2>
+      <p class="chapo">Même sans le code, on commence ici. Les démarches ANTS, c'est nous.</p>
+    </header>
+    <div class="portique" id="portique">
+      <div class="feux" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <button class="tenir" id="tenir" type="button"><span class="jauge" aria-hidden="true"></span><span class="txt">Maintiens pour allumer les feux</span></button>
+      <p class="depart">Feu vert. Tu sais où tu vas.</p>
+    </div>
+    <ol class="tour">
+      <li data-i="0"><span class="t">S1 · 01</span><h3>Évaluation</h3><p>Environ 1 heure au volant avec un moniteur. Elle dit combien d'heures il te faut, c'est écrit dans ton contrat.</p></li>
+      <li data-i="1"><span class="t">S1 · 02</span><h3>Code</h3><p>En salle à l'auto-école et sur ton téléphone. On t'aide à réserver ton examen.</p></li>
+      <li data-i="2"><span class="t">S2 · 03</span><h3>Conduite</h3><p>Leçons de 50 minutes, tôt le matin, le soir ou le samedi. Départ de l'école, ou de chez toi, ton lycée, ton travail, la gare.</p></li>
+      <li data-i="3"><span class="t">S3 · 04</span><h3>Examen</h3><p>On cherche ta date d'examen dès ton inscription. Ton moniteur est avec toi le jour J, souvent au centre de Gonesse.</p></li>
+      <li data-i="4"><span class="t">S3 · 05</span><h3>Permis</h3><p>Ton dossier, ton numéro NEPH, la demande de ton permis : on s'en occupe.</p></li>
+    </ol>
+    <p class="resultats">Taux de réussite : publié dès nos premiers résultats officiels.</p>
+  </div>
+</section>
+
+<!-- FAQ : la radio de l'équipe -->
+<section class="asphalte radio" id="questions" data-in data-virage="La radio de l'équipe">
+  <div class="enveloppe">
+    <header class="tete">
+      <p class="lbl"><i class="onde" aria-hidden="true"><b></b><b></b><b></b><b></b></i>Radio de l'équipe · canal 95</p>
+      <h2>Tes questions, nos réponses.</h2>
+    </header>
+    <div class="faq" id="faq">
+      <details><summary>Je n'ai pas le code, je commence par quoi ?</summary><p>Par ton évaluation et le code : on t'inscrit, tu révises en salle et en ligne. Les leçons de conduite peuvent démarrer en parallèle.</p></details>
+      <details><summary>J'ai peur de conduire, ça se passe comment ?</summary><p>C'est fréquent, et nos moniteurs ont plusieurs méthodes pour ça. On adapte le rythme, et la voiture a une double commande : ton moniteur peut freiner à tout moment.</p></details>
+      <details><summary>À quel âge je peux commencer ?</summary><p>Dès 15 ans en conduite accompagnée, dès 17 ans en formation classique. Le scooter (permis AM), dès 14 ans.</p></details>
+      <details><summary>Combien coûte une heure en plus ?</summary><p>60 € la leçon.</p></details>
+      <details><summary>Je peux payer en plusieurs fois ?</summary><p>Demande-nous : on en parle ensemble, selon ta formation. Espèces, virement ou chèque.</p></details>
+      <details><summary>Je viens d'une autre auto-école, comment je transfère mon dossier ?</summary><p>Tu mets fin à ton mandat avec l'ancienne auto-école en ligne, depuis ton espace candidat. On t'accompagne dans la démarche.</p></details>
+      <div class="more" hidden id="faq-more">
+        <details><summary>Combien d'heures il faut, en moyenne ?</summary><p>En moyenne en France, autour de 35 heures. Ton évaluation de départ donne ton chiffre à toi.</p></details>
+        <details><summary>Combien de temps entre l'inscription et le permis ?</summary><p>Ça dépend de ton évaluation et des dates d'examen : on te donne une estimation au premier rendez-vous.</p></details>
+        <details><summary>J'ai déjà mon code, je peux venir seulement pour la conduite ?</summary><p>Oui.</p></details>
+        <details><summary>Vous venez me chercher chez moi ?</summary><p>Oui, selon les créneaux : chez toi, au lycée, au travail ou à la gare. Dis-le à l'inscription.</p></details>
+        <details><summary>Il y a une monitrice ?</summary><p>Oui.</p></details>
+        <details><summary>Vous faites des leçons le week-end ?</summary><p>Oui, le samedi.</p></details>
+        <details><summary>Boîte automatique ou manuelle, tu me conseilles quoi ?</summary><p>La manuelle te donne une maîtrise plus complète. L'automatique demande moins d'heures (13 minimum au lieu de 20), et la passerelle de 7 heures permet de passer à la manuelle plus tard.</p></details>
+        <details><summary>J'ai un handicap ou un trouble (dyslexie…), c'est adapté ?</summary><p>Oui, on adapte le code et les leçons. Si ton handicap demande une voiture aménagée, appelle-nous d'abord pour en parler.</p></details>
+        <details><summary>Je rate l'examen, il se passe quoi ?</summary><p>Il y a un délai imposé par l'administration avant de repasser. Si besoin, quelques leçons de perfectionnement, puis tu repasses.</p></details>
+        <details><summary>Je peux annuler une leçon ?</summary><p>Oui, au moins 48 heures avant. Sinon la leçon est facturée, sauf justificatif valable.</p></details>
+        <details><summary>Le CPF, c'est possible ?</summary><p>Pas encore. Notre certification qualité est en cours. En attendant, on vérifie avec toi les autres aides.</p></details>
+        <details><summary>Pourquoi « pilotes de la route » ?</summary><p>Parce qu'un bon pilote voit loin, anticipe et garde la maîtrise. Ici, pas de vitesse : on t'apprend à repérer les dangers et à prendre les bons choix.</p></details>
+      </div>
+      <button class="btn ligne clair" type="button" id="faq-btn">Voir toutes les questions</button>
+    </div>
+  </div>
+</section>
+
+<!-- DOSSIER : drapeau jaune -->
+<section class="jaune dossier" id="dossier" data-in data-virage="Drapeau jaune">
+  <div class="enveloppe deux">
+    <header class="tete">
+      <p class="lbl">Drapeau jaune · on prépare ton dossier</p>
+      <h2>Les papiers à apporter.</h2>
+      <p class="chapo">Coche au fur et à mesure : ta liste reste sur ton téléphone.</p>
+    </header>
+    <div>
+      <ul class="coche" id="coche">
+        <li><label><input type="checkbox"> Pièce d'identité en cours de validité</label></li>
+        <li><label><input type="checkbox"> Justificatif de domicile de moins de 6 mois</label></li>
+        <li><label><input type="checkbox"> Hébergé(e) : attestation d'hébergement et pièce d'identité de l'hébergeur</label></li>
+        <li><label><input type="checkbox"> Code e-photo</label></li>
+        <li><label><input type="checkbox"> Moins de 21 ans : ASSR 2 ou ASR</label></li>
+        <li><label><input type="checkbox"> Moins de 25 ans : JDC, ou attestation de recensement</label></li>
+      </ul>
+      <h3>Le financement</h3>
+      <ul class="plat">
+        <li>Espèces, virement, chèque. En plusieurs fois : demande-nous.</li>
+        <li>Aides France Travail, Région, apprentis, mairie : on vérifie avec toi.</li>
+        <li>CPF : bientôt, quand notre certification qualité sera obtenue.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT : deux portes -->
+<section class="asphalte contact" id="contact" data-in data-virage="Ligne d'arrivée">
+  <div class="damier" aria-hidden="true"><i></i></div>
+  <div class="enveloppe">
+    <header class="tete"><p class="lbl">Ligne d'arrivée</p><h2>On se parle ?</h2></header>
+    <div class="portes">
+      <div class="porte" data-i="0">
+        <p class="lbl">Porte 1 · tout de suite</p>
+        <a class="gros-tel" href="tel:+33767561121">07 67 56 11 21</a>
+        <div class="ctas"><a class="btn go" href="tel:+33767561121">Appeler</a><a class="btn ligne clair" href="https://wa.me/33767561121?text=Bonjour%2C%20je%20voudrais%20des%20infos%20sur%20le%20permis.">WhatsApp</a></div>
+        <p>On te répond en français, en arabe, en anglais ou en turc.</p>
+      </div>
+      <div class="porte" data-i="1">
+        <p class="lbl">Porte 2 · passe-nous voir</p>
+        <dl>
+          <dt>Bureau</dt><dd>Lundi au vendredi : 10 h à 12 h et 15 h à 20 h<br>Samedi : 10 h à 18 h · fermé le dimanche</dd>
+          <dt>Adresse</dt><dd>64 rue de Paris, 95500 Le Thillay · <a href="https://maps.google.com/?q=64+rue+de+Paris+95500+Le+Thillay">Itinéraire</a></dd>
+          <dt>Venir</dt><dd>Bus 11 et 9502 · stationnement facile</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe">
+    <img src="assets/logo-zac.webp" alt="ZAC Auto-école" width="160" height="130" loading="lazy">
+    <div>
+      <p>ZAC Auto-école · 64 rue de Paris, 95500 Le Thillay · <a href="tel:+33767561121">07 67 56 11 21</a></p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · aucun pisteur publicitaire</p>
+      <p>Images générées par IA, aux couleurs de l'école. Site conçu par MS Digital Agency.</p>
+      <p><button type="button" class="calme-btn" id="calme">Couper les animations</button></p>
+    </div>
+  </div>
+</footer>
+
+<nav class="barre" aria-label="Actions rapides">
+  <a href="tel:+33767561121">Appeler</a>
+  <a href="#inscription" class="go">M'inscrire</a>
+  <a href="https://wa.me/33767561121?text=Bonjour%2C%20je%20voudrais%20des%20infos%20sur%20le%20permis.">WhatsApp</a>
+</nav>
+
+<!-- Entrée dans le box, puis bureau des ingénieurs -->
+<div class="entree" id="entree" hidden>
+  <img class="e-box" id="eBox" alt="">
+  <div class="cadre" id="cadre"><div class="rideau" id="rideau"></div></div>
+  <img class="e-in" id="eIn" alt="">
+</div>
+<dialog id="bureau" aria-labelledby="bureau-titre">
+  <button class="close" type="button" aria-label="Fermer le bureau">×</button>
+  <div class="bur-img"><img alt="" id="bureau-img"><p class="lbl provisoire-in">Intérieur du box : image à générer (ligne 1)</p></div>
+  <div class="bur-body">
+    <p class="lbl" id="bureau-kicker"></p>
+    <h3 id="bureau-titre"></h3>
+    <p class="bur-sub" id="bureau-sub"></p>
+    <div id="bureau-contenu"></div>
+    <div class="bur-info">
+      <p><b>Qui contacter :</b> l'accueil de l'école, au 07 67 56 11 21 ou sur WhatsApp.</p>
+      <p><b>Horaires du bureau :</b> lundi au vendredi 10 h à 12 h et 15 h à 20 h, samedi 10 h à 18 h.</p>
+      <p><b>Tarif :</b> on te le donne par téléphone. Le prix définitif est écrit dans ton contrat, après l'évaluation de départ.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn go" href="#inscription" id="bureau-go">M'inscrire avec cette formation</a>
+      <a class="btn ligne" href="tel:+33767561121">Appeler</a>
+    </div>
+  </div>
+</dialog>
+
+<script src="assets/v3.js" defer></script>
+</body>
+</html>
